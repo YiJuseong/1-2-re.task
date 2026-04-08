@@ -61,6 +61,26 @@ class QuizGame:
             self.best_score = score
             self.save_data()
 
+    def add_quiz(self):
+        print("\n--- 새 퀴즈 추가 ---")
+        question = input("문제 내용을 입력하세요: ").strip()
+        choices = []
+        for i in range(1, 5):
+            choices.append(input(f"선택지 {i} 입력: ").strip())
+        answer = self.safe_input("정답 번호(1~4) 입력: ", 1, 4)
+        
+        self.quizzes.append(Quiz(question, choices, answer))
+        self.save_data()
+        print("퀴즈가 성공적으로 등록되었습니다.")
+    
+    def show_list(self):
+        print("\n--- 등록된 퀴즈 목록 ---")
+        if not self.quizzes:
+            print("등록된 퀴즈가 없습니다.")
+            return
+        for i, q in enumerate(self.quizzes, 1):
+            print(f"{i}. {q.question}")
+
     def run(self):
         while True:
             print("\n===== 퀴즈 게임 메뉴 =====")
