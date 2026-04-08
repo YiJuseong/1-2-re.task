@@ -27,7 +27,7 @@ class QuizGame:
     def __init__(self):
         self.file_path = "state.json"
         self.quizzes = []
-        self.best_score = 0
+        self.best_score = None
         self.load_data()
 
     def load_data(self):
@@ -110,8 +110,11 @@ class QuizGame:
                 print(f"틀렸습니다. 정답은 {q.answer}번입니다.")
 
         print(f"\n최종 점수: {score} / {len(self.quizzes)}")
-        if score > self.best_score:
+        if self.best_score == None:
             print(f"축하합니다! 최고 기록 달성 (이전: {self.best_score})")
+            self.best_score = score
+        elif score > self.best_score:
+            print(f"축하합니다! 새로운 최고 기록 달성 (이전: {self.best_score})")
             self.best_score = score
             self.save_data()
 
