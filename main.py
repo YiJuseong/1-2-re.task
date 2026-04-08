@@ -29,3 +29,12 @@ class QuizGame:
         self.quizzes = []
         self.best_score = 0
         self.load_data()
+
+    def load_data(self):
+        default_quizzes = [
+            {"question": "리눅스나 터미널 환경에서 파일을 다른 디렉토리로 이동시키거나 이름을 변경할 때 사용하는 명령어는?", "choices": ["cp", "rm", "ls", "mv"], "answer": 4},
+            {"question": "현재 디렉토리 내의 모든 파일과 하위 폴더를 포함하여 강제로 삭제하고 싶을 때 사용하는 명령어로 가장 적절한 것은 무엇인가?", "choices": ["cp -a", "rm -rf*", "mkdir -p", "dekete --all"], "answer": 2},
+            {"question": "Docker에서 이미지를 기반으로 새로운 컨테이너를 생성하고 실행하는 명령어는 무엇인가?", "choices": ["docker run", "docker build", "docker pull", "docker ps"], "answer": 1},
+            {"question": "SGitHub와 같은 원격 저장소에 로컬에서 작업한 커밋(Commit) 내역을 업로드할 때 사용하는 Git 명령어는 무엇인가?", "choices": ["git clone", "git pull", "git push", "git commit"], "answer": 3},
+            {"question": "Git에서 새로운 변경 사항을 스테이징 영역(Staging Area)에 추가하기 위해 사용하는 명령어는 무엇인가?", "choices": ["git init", "git checkout", "git add", "git status"], "answer": 3}
+        ]
