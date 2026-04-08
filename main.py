@@ -153,4 +153,5 @@ class QuizGame:
 
 if __name__ == "__main__":
     game = QuizGame()
+    game.load_data()
     game.run()
