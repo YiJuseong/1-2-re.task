@@ -3,7 +3,7 @@ import os
 import sys
 
 class Quiz:
-    def __init__(self, question, choices, answer):
+    def __init__(self, question: str, choices: list, answer: int):
         self.question = question
         self.choices = choices
         self.answer = int(answer)
@@ -59,11 +59,19 @@ class QuizGame:
             "best_score": self.best_score
         }
 
+        temp_file = self.file_path + ".tmp"
+
         try:
-            with open(self.file_path, 'w', encoding='utf-8') as f:
+            with open(temp_file, 'w', encoding='utf-8') as f:
                 json.dump(data, f, ensure_ascii=False, indent=4)
+
+            
+            os.replace(temp_file, self.file_path)
+        
         except Exception as e:
-            print(f"저장 오류: {e}")
+            print(f"\n[저장 실패] 데이터 보존을 위해 기존 파일을 유지합니다. 에러: {e}")
+            if os.path.exists(temp_file):
+                os.remove(temp_file)
 
     def safe_input(self, prompt, range_min=None, range_max=None):
         while True:
